@@ -1,10 +1,8 @@
+@extends('layouts.app')
 
-
-
-<!DOCTYPE html>
-<html>
-	<body>
-		<p id="text"></p>
+@section('content')
+ 
+	<p id="text"></p>
 
 	<script>
 		let ReportNumbers = 
@@ -36,6 +34,5 @@
 		
 	</script>
 
-	</body>
-</html>
+@endsection
 
