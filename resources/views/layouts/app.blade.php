@@ -10,9 +10,10 @@
     <body>
         <div class = "NavBar">
             <ul>
-                <li><a href='/day1'>day 1</a></i>
-                <li><a href='/day2'>day 2</a></i>
-                <li><a href="/day4">day 4</a></i>
+                <li class="{{ Request::is('/') ? 'active' : '' }}"><a href={{ url('/') }}>Home</a></i>
+                <li class="{{ Request::is('day1') ? 'active' : '' }}"><a href={{ url('/day1') }}>day 1</a></i>
+                <li class="{{ Request::is('day2') ? 'active' : '' }}"><a href={{ url('/day2') }}>day 2</a></i>
+                <li class="{{ Request::is('day4') ? 'active' : '' }}"><a href={{ url('/day4') }}>day 4</a></i>
             </ul>
         </div>
         <div class="yield">

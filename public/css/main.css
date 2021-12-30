@@ -1,5 +1,6 @@
 body{
-    background-color: rgb(170, 169, 169);
+    background-color: rgb(28,27,34);
+    color: rgb(251,251,254);
 }
 
 .yield{
@@ -16,7 +17,7 @@ body{
     list-style-type: none;
     margin: 0;
     padding: 0;
-    background-color: #333;
+    background-color: rgb(17, 17, 17);
     display: flex;
     position: fixed;
     width:100%;
@@ -24,16 +25,17 @@ body{
 
 .NavBar li a {
     display: block;
-    color: white;
+    color: rgb(199, 199, 199);
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
 }
   
 .NavBar li a:hover:not(.active) {
-    background-color: rgb(0, 97, 24);
+    background-color: rgb(0, 150, 37);
 }
   
 .active {
-    background-color: #04AA6D;
+    background-color: rgb(0, 97, 24);
+    pointer-events: none;
 }
