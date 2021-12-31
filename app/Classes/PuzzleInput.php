@@ -7,8 +7,17 @@ class PuzzleInput
     static public function get(string $puzzle):string
     {
         $path = "puzzleData/";
-        $fileLocation = $path . $puzzle;
-        $puzzleInput = fopen($fileLocation, 'r');
-        return (string)$puzzleInput;
+
+        $PuzzleData = fopen($path . $puzzle, "r");
+        if ($PuzzleData) {
+            while (($PuzzleText = fgets($PuzzleData)) !== false) {
+                return $PuzzleText;
+            }
+
+            fclose($PuzzleData);
+        } else {
+            return "Error: can not find puzzle file";
+        }
     }
 }
+
