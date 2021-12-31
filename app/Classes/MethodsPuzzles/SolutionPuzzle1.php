@@ -16,9 +16,10 @@ class SolutionPuzzle1
 
     static private function calculateDepth($ReportSonarSweep):int{
         $depthIncreased = 0;
+        $lastMeasurement = 3;
 
         $arrlength = count($ReportSonarSweep);
-        for ($i = 0; $i+3 < $arrlength; $i++)
+        for ($i = 0; $i+$lastMeasurement < $arrlength; $i++)
 		{
             $measurement = $ReportSonarSweep[$i];
             $measurement1 = $ReportSonarSweep[$i+1];
