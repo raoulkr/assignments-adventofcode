@@ -6,15 +6,14 @@ class PuzzleInput
 {
     static public function get(string $puzzle):string
     {
-        $path = "puzzleData/";
+        $path = "../puzzleData/";
+        $location = $path . $puzzle;
 
-        $PuzzleData = fopen($path . $puzzle, "r");
-        if ($PuzzleData) {
-            while (($PuzzleText = fgets($PuzzleData)) !== false) {
-                return $PuzzleText;
-            }
-
-            fclose($PuzzleData);
+        $PuzzleFile = fopen($location , "r");
+        if ($PuzzleFile) {
+            $puzzleContent = fread($PuzzleFile, filesize($location));
+            fclose($PuzzleFile);
+            return $puzzleContent;
         } else {
             return "Error: can not find puzzle file";
         }
