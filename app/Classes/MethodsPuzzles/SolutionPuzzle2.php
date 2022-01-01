@@ -13,12 +13,12 @@ class SolutionPuzzle2
         $puzzleArrWords = explode(" " , $puzzleWords);
         $puzzleArrValues = explode(" " , $puzzleValues);
         $puzzleValues = array_shift($puzzleArrValues);
-        $result = self::Method($puzzleArrWords, $puzzleArrValues);
+        $plannedCourseValue = self::Dive($puzzleArrWords, $puzzleArrValues);
 
-        return "RESULT: " . $result;
+        return "Planned Course: " . $plannedCourseValue;
     }
 
-    static public function Method($shipDirections, $shipCardinalValues)
+    static private function Dive($shipDirections, $shipCardinalValues): int
     {
         $aim = 0;
         $horizontal = 0;
@@ -40,9 +40,9 @@ class SolutionPuzzle2
             }
         }
 
-        $result = $depth * $horizontal;
+        $plannedCourse = $depth * $horizontal;
 
-        return $result;
+        return $plannedCourse;
     }
 }
 
