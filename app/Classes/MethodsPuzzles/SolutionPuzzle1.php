@@ -8,31 +8,32 @@ class SolutionPuzzle1
 {
     static public function Solution(string $puzzle):string
     {
-        $PuzzleData = array_map('intval', str_split(PuzzleInput::get($puzzle)));
-        $depth = self::calculateDepth($PuzzleData);
+        $puzzleString = str_replace(array("\n", "\r"), ' ', PuzzleInput::get($puzzle));
+        $puzzleData = explode(" ",$puzzleString);
+        $depth = self::calculateDepth($puzzleData);
 
         return "Depth increased: " . $depth;
     }
 
-    static private function calculateDepth($ReportSonarSweep):int{
+    static private function calculateDepth($reportSonarSweep):int{
         $depthIncreased = 0;
         $lastMeasurement = 3;
 
-        $arrlength = count($ReportSonarSweep);
-        for ($i = 0; $i+$lastMeasurement < $arrlength; $i++)
+        for ($i = 0; $i + $lastMeasurement < count($reportSonarSweep); $i++)
 		{
-            $measurement = $ReportSonarSweep[$i];
-            $measurement1 = $ReportSonarSweep[$i+1];
-            $measurement2 = $ReportSonarSweep[$i+2];
-            $measurement3 = $ReportSonarSweep[$i+3];
+            $measurement1 = intval($reportSonarSweep[$i]);
+            $measurement2 = intval($reportSonarSweep[$i+1]);
+            $measurement3 = intval($reportSonarSweep[$i+2]);
+            $measurement4 = intval($reportSonarSweep[$i+3]);
 
-			$currentReportValue = $measurement + $measurement1 + $measurement2;
-			$nextReportValue = $measurement1 + $measurement2 + $measurement3;
+            $currentReportValue = $measurement1 + $measurement2 + $measurement3;
+			$nextReportValue = $measurement2 + $measurement3 + $measurement4;
 
 			if($currentReportValue < $nextReportValue){
 				$depthIncreased++;
 			}
-		}
-        return $depthIncreased;
+        }
+
+        return intval($depthIncreased);
     }
 }
