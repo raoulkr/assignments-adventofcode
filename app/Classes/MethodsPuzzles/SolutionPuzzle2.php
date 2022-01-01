@@ -8,42 +8,35 @@ class SolutionPuzzle2
 {
     static public function Solution(string $puzzle):string
     {
-        $PuzzleData = str_split(PuzzleInput::get($puzzle));
-        $result = self::Method($PuzzleData);
+        $puzzleValues = preg_replace('/[^0-9.]+/', ' ', PuzzleInput::get($puzzle));
+        $puzzleWords = preg_replace('/[0-9]+/', '', PuzzleInput::get($puzzle));
+        $puzzleArrWords = explode(" " , $puzzleWords);
+        $puzzleArrValues = explode(" " , $puzzleValues);
+        $puzzleValues = array_shift($puzzleArrValues);
+        $result = self::Method($puzzleArrWords, $puzzleArrValues);
 
         return "RESULT: " . $result;
     }
 
-    static public function Method($puzzle):int
+    static public function Method($shipDirections, $shipCardinalValues)
     {
         $aim = 0;
         $horizontal = 0;
         $depth = 0;
-        $error=0;
 
-        $ShipCoordinatesList = $puzzle;
-        $arrlength = count($ShipCoordinatesList);
+        for ($i = 0; $i < count($shipDirections); $i++) {
+            switch(trim($shipDirections[$i])){
+                case "down":
+                    $aim += $shipCardinalValues[$i];
+                    break;
+                case "up":
+                    $aim -= $shipCardinalValues[$i];
+                    break;
+                case "forward":
+                    $horizontal += $shipCardinalValues[$i];
+                    $depth += $shipCardinalValues[$i] * $aim;
+                    break;
 
-        for ($i = 0; $i < $arrlength; $i++) {
-            if(!is_int($ShipCoordinatesList[$i])){
-                switch($ShipCoordinatesList[$i]){
-                    case "down":
-                        $i++;
-                        $aim += intval($ShipCoordinatesList[$i]);
-                        break;
-                    case "up":
-                        $i++;
-                        $aim -= intval($ShipCoordinatesList[$i]);
-                        break;
-                    case "forward":
-                        $i++;
-                        $horizontal += intval($ShipCoordinatesList[$i]);
-                        $depth += intval($ShipCoordinatesList[$i]) * $aim;
-                        break;
-                    default:
-                        $error++;
-                        break;
-                }
             }
         }
 
