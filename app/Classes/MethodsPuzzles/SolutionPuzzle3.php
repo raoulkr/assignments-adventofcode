@@ -11,14 +11,14 @@ class SolutionPuzzle3
         PuzzleInput::get($puzzle);
         $puzzleString = str_replace(array("\n", "\r"), ' ', PuzzleInput::get($puzzle));
         $binaryData = explode(" ",$puzzleString);
-        $result = self::PowerConsumption($binaryData);
-        return "The PowerConsumption is: " . $result;
+        $powerWasted = self::PowerConsumption($binaryData);
+        return "The PowerConsumption is: " . $powerWasted ;
     }
 
     static private function PowerConsumption($binaryConsumptionData){
         $zeroBit = array(0,0,0,0,0,0,0,0,0,0,0,0);
         $oneBit = array(0,0,0,0,0,0,0,0,0,0,0,0);
-        $binary = array(0,0,0,0,0,0,0,0,0,0,0,0);
+        $binary = array();
 
         for ($i = 0; $i < count($binaryConsumptionData); $i++)
 		{
