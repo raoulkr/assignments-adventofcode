@@ -10,8 +10,8 @@ class SolutionPuzzle2
     static public function Solution(string $puzzle):string
     {
         $puzzleInput = PuzzleInput::get($puzzle);
-        $shipCardinalValues = Instruction::getIntArr($puzzleInput);
-        $shipDirections = Instruction::getStrArr($puzzleInput);
+        $shipCardinalValues = Instruction::getCardinalValues($puzzleInput);
+        $shipDirections = Instruction::getDirections($puzzleInput);
 
         return "Planned Course: " . self::Dive($shipDirections, $shipCardinalValues);
     }
