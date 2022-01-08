@@ -4,7 +4,7 @@ namespace App\Classes;
 
 class PuzzleInput
 {
-    static public function get(string $puzzle):string
+    static public function get(string $puzzle):array
     {
         $path = "../puzzleData/";
         $location = $path . $puzzle;
@@ -13,7 +13,7 @@ class PuzzleInput
         if ($PuzzleFile) {
             $puzzleContent = fread($PuzzleFile, filesize($location));
             fclose($PuzzleFile);
-            return $puzzleContent;
+            return explode("\n", $puzzleContent);
         } else {
             return "Error: can not find puzzle file";
         }

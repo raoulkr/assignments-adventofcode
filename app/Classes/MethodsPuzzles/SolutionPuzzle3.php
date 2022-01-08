@@ -10,8 +10,7 @@ class SolutionPuzzle3
     static OccurenceBit $occurencesOneBit;
 
     static public function Solution(string $puzzle) : string {
-        $binaryData = explode("\n", PuzzleInput::get($puzzle));
-        $powerWasted = self::PowerConsumption($binaryData);
+        $powerWasted = self::PowerConsumption(PuzzleInput::get($puzzle));
         return "The PowerConsumption is: " . $powerWasted ;
     }
 

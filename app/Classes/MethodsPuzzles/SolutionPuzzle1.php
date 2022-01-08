@@ -8,9 +8,7 @@ class SolutionPuzzle1
 {
     static public function Solution(string $puzzle):string
     {
-        $puzzleString = str_replace(array("\n", "\r"), ' ', PuzzleInput::get($puzzle));
-        $puzzleData = explode(" ",$puzzleString);
-        $depth = self::calculateDepth($puzzleData);
+        $depth = self::calculateDepth(PuzzleInput::get($puzzle));
 
         return "Depth increased: " . $depth;
     }
