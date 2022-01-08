@@ -34,6 +34,8 @@ class OccurenceBit
             $this->gamma[$key] = $value > $this->totalChecks / 2 ? 1 : 0;
         }
 
+        $this->sameBitOccurences;
+
         return bindec(implode($this->gamma));
     }
 
