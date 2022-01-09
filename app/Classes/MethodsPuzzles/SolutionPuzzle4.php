@@ -17,18 +17,19 @@ class SolutionPuzzle4
 
     static private function BingoWinningBoard(array $bingoMaps, array $bingoMarks):string
     {
+        $bingoMarkNumber = 0;
         $boardSize = 25;
         $maxBoards = count($bingoMaps)/$boardSize;
 
-        foreach($bingoMaps as $i => $bingoNum){
-            foreach($bingoMarks as $mark){
+        foreach($bingoMarks as $j => $mark){
+            foreach($bingoMaps as $i => $bingoNum){
                 if($mark == $bingoNum){
                     $bingoMaps[$i] = "bingo";
                 }
 
-                $winningBingoBoard = Bingo::checkBingo($maxBoards, $boardSize, $bingoMaps);
-                if($winningBingoBoard > 0){
-                    return $winningBingoBoard;
+                $unMarkedBingoNumber = Bingo::checkBingo($maxBoards, $boardSize, $bingoMaps);
+                if($unMarkedBingoNumber > 0){
+                    return $bingoMarks[$j] * $unMarkedBingoNumber;
                 }
             }
         }

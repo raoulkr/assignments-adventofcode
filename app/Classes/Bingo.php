@@ -33,7 +33,12 @@ class Bingo
                     $yBingo++;
                 }
                 if($yBingo == 5||$xBingo == 5){
-                    return $board;
+                    $unmarkedNumber = 0;
+                    dd($bingoBoard);
+                    $bingoBoard = array_map('intval', preg_replace('/[^0-99.]+/', ' ', $bingoBoard));
+                    $unmarkedNumberArr = self::removeArrEmpty($bingoBoard);
+                    foreach($unmarkedNumberArr as $i){$unmarkedNumber+=$i;}
+                    return $unmarkedNumber;
                 }
             }
         }
